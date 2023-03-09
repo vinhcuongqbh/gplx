@@ -81,7 +81,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="staff.khoahoc.index" class="nav-link">
+                            <a href="staff/khoahoc/index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Khóa học
