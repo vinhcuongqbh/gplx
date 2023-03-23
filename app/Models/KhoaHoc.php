@@ -10,4 +10,5 @@ class KhoaHoc extends Model
     use HasFactory;
     protected $connection = 'sqlsrv';
     protected $table = 'KhoaHoc';
+    public $timestamps = false;
 }

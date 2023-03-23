@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\UserRole;
 use Carbon\Carbon;
+
 
 class UserRoleSeeder extends Seeder
 {
@@ -14,14 +15,14 @@ class UserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('user_roles')->insert([
-            'role_name' => 'admin',
-            'created_at' => Carbon::Now(),
-        ]);
+        $userRole =  [
+            [
+                'role_id' => 1,
+                'role_name' => 'Quản trị hệ thống',
+                'created_at' => Carbon::now(),
+            ],
+        ];
 
-        DB::table('user_roles')->insert([
-            'role_name' => 'staff',
-            'created_at' => Carbon::Now(),
-        ]);
+        UserRole::insert($userRole);
     }
 }

@@ -4,10 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-
+use App\Models\User;
 
 
 class UserSeeder extends Seeder
@@ -17,20 +16,70 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'Vĩnh Cường',
-            'email' => 'vinhcuongqbh@gmail.com',
-            'password' => Hash::make('123456'),
-            'role_id' => 1,
-            'created_at' => Carbon::Now(),
-        ]);
+        $users = [
+            [
+                'name' => 'Vĩnh Cường',
+                'email' => 'vinhcuongqbh@gmail.com',
+                'password' => Hash::make('123456'),      
+                'role_id' => 1,
+                'created_at' => Carbon::now(),
+            ],
+            // [
+            //     'name' => 'Ngọc Mai',
+            //     'user_name' => 'ngocmaiqbh',
+            //     'email' => 'ngocmaiqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => 1,
+            //     'role_id' => 2,
+            //     'created_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name' => 'Vĩnh Linh',
+            //     'user_name' => 'vinhlinhqbh',
+            //     'email' => 'vinhlinhqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => 2,
+            //     'role_id' => 2,
+            //     'created_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name' => 'Minh Hồng',
+            //     'user_name' => 'minhhongqbh',
+            //     'email' => 'minhhongqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => 1,
+            //     'role_id' => 2,
+            //     'created_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name' => 'Vĩnh Khang',
+            //     'user_name' => 'vinhkhangqbh',
+            //     'email' => 'vinhkhangqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => 2,
+            //     'role_id' => 2,
+            //     'created_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name' => 'Vĩnh Thành',
+            //     'user_name' => 'vinhthanhqbh',
+            //     'email' => 'vinhthanhqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => null,
+            //     'role_id' => 3,
+            //     'created_at' => Carbon::now(),
+            // ],
+            // [
+            //     'name' => 'Khánh Trinh',
+            //     'user_name' => 'khanhtrinhqbh',
+            //     'email' => 'khanhtrinhqbh@gmail.com',
+            //     'password' => Hash::make('123456'),
+            //     'center_id' => null,
+            //     'role_id' => 4,
+            //     'created_at' => Carbon::now(),
+            // ]
+        ];
 
-        DB::table('users')->insert([
-            'name' => 'Ngọc Mai',
-            'email' => 'ngocmaiqbh@gmail.com',
-            'password' => Hash::make('123456'),
-            'role_id' => 2,
-            'created_at' => Carbon::Now(),
-        ]);
+        User::insert($users);
     }
 }

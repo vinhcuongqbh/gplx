@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\KhoaHocController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KhoaHocController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +15,39 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.dashboard');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('staff.dashboard');
-// })->middleware(['auth', 'verified'])->name('staff.dashboard');
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
 
-Route::get('/dashboard', [KhoaHocController::class, 'index']);
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('', [UserController::class, 'index'])->name('user');
+        Route::get('create', [UserController::class, 'create'])->name('user.create');
+        Route::post('store', [UserController::class, 'store'])->name('user.store');
+        Route::get('{id}/', [UserController::class, 'show'])->name('user.show');
+        Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::post('{id}/update', [UserController::class, 'update'])->name('user.update');
+        Route::get('{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+        Route::get('{id}/restore', [UserController::class, 'restore'])->name('user.restore');
+        Route::post('{id}/resetpass', [UserController::class, 'resetpass'])->name('user.resetpass');
+        Route::post('search', [UserController::class, 'search'])->name('user.search');
+    });
+
+    Route::group(['prefix' => 'khoahoc'], function () {
+        Route::get('', [KhoaHocController::class, 'index'])->name('admin.khoahoc');
+        Route::get('{id}/', [KhoaHocController::class, 'show'])->name('admin.khoahoc.show');
+        Route::get('{id}/edit', [KhoaHocController::class, 'edit'])->name('admin.khoahoc.edit');     
+        Route::post('{id}/update', [KhoaHocController::class, 'update'])->name('admin.khoahoc.update');   
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,4 +55,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
