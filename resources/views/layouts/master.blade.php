@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Googlebot-News" content="noindex, nofollow">
+    {{-- <meta name="Googlebot-News" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="robots" content="noimageindex">
+    <meta name="robots" content="noimageindex"> --}}
     <title>GPLX</title>
     <link rel="icon" href="/img/logo.png" />
     <!-- Google Font: Source Sans Pro -->

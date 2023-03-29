@@ -11,10 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 
 class KhoaHocController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
+{    
     public function index(Request $request)
     {
         if (isset($request->MaKH)) $MaKH = $request->MaKH;
@@ -27,6 +24,7 @@ class KhoaHocController extends Controller
 
         return view('admin.khoahoc.index', ['khoahocs' => $khoahocs]);
     }
+    
 
 
     public function show(string $MaKH)
@@ -38,6 +36,8 @@ class KhoaHocController extends Controller
 
         return view('admin.khoahoc.show', ['khoahoc' => $khoahoc]);
     }
+
+
 
     public function edit(string $MaKH)
     {
